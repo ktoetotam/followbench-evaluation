@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# API Keys
+.env
+*.key
+*.pem
+
+# Data and Results
+evaluation_results/
+followbench_data/
+*.json
+*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Siemens Internal (not for public repo)
+prompts/
+corrected_prompts/
