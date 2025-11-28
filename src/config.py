@@ -6,6 +6,11 @@ import os
 from pathlib import Path
 from typing import Dict, List
 
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 # Project paths
 PROJECT_ROOT = Path(__file__).parent.parent
 PROMPTS_DIR = PROJECT_ROOT / "prompts"
@@ -19,11 +24,27 @@ FOLLOWBENCH_DATA_DIR.mkdir(exist_ok=True)
 
 # Model configurations
 MODEL_CONFIGS = {
+    "gpt-5-nano": {
+        "api_key_env": "OPENAI_API_KEY",
+        "model_name": "gpt-5-nano",
+        "temperature": 1.0,  # gpt-5-nano only supports default temperature
+        "max_tokens": 2048,
+    },
     "gpt-4": {
         "api_key_env": "OPENAI_API_KEY",
         "model_name": "gpt-4",
         "temperature": 0.0,
         "max_tokens": 2048,
+    },
+    "azure-gpt-5-nano": {
+        "api_key_env": "AZURE_OPENAI_API_KEY",
+        "endpoint_env": "AZURE_OPENAI_ENDPOINT",
+        "deployment_env": "AZURE_OPENAI_DEPLOYMENT",
+        "api_version": "2024-02-15-preview",
+        "model_name": "gpt-5-nano",
+        "temperature": 1.0,
+        "max_tokens": 2048,
+        "is_azure": True,
     },
     "azure-gpt-4": {
         "api_key_env": "AZURE_OPENAI_API_KEY",
@@ -80,7 +101,7 @@ TEST_CONFIG = {
     "constraint_levels": [1, 2, 3, 4, 5],  # Number of constraints to test
     "samples_per_level": 10,  # Number of test samples per level
     "constraint_types_to_test": CONSTRAINT_TYPES,
-    "evaluator_model": "gpt-4",  # Model to use for LLM-based evaluation
+    "evaluator_model": "gpt-5-nano",  # Model to use for LLM-based evaluation
 }
 
 
